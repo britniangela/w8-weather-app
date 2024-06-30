@@ -7,55 +7,67 @@
     <title>w8 Weather App</title>
   </head>
   <body>
-    <header>
-      <form action="" class="search-form">
-        <input
-          type="text"
-          placeholder="Enter a city"
-          class="search-input"
-          id="search-input"
-        />
-        <input
-          type="submit"
-          value="Search"
-          class="search-button"
-          id="search-button"
-        />
-      </form>
-    </header>
-    <main>
-      <div class="app-container">
-        <h1>Orlando</h1>
-        <p>
-          Sunday 10:20, cloudy <br />
-          Humidity: 50% | Wind speed: 6mph
-        </p>
-        <p>☁️ 92°F</p>
-        <ul>
-          <li>
-            Mon 🌥 <br />
-            79° | 95°
-          </li>
-          <li>
-            Tue 🌦 <br />
-            81° | 95°
-          </li>
-          <li>
-            Wed 🌤 <br />
-            80° | 97°
-          </li>
-          <li>
-            Thu ☀️ <br />
-            82° | 97°
-          </li>
-          <li>
-            Fri 🌧 <br />
-            80° | 94°
-          </li>
-          <li>Sat</li>
-        </ul>
-      </div>
-      <footer>
+    <div class="weather-app-container">
+      <header>
+        <form action="" class="search-form">
+          <input
+            type="text"
+            placeholder="Enter a city"
+            class="search-input"
+            id="search-input"
+          />
+          <input
+            type="submit"
+            value="Search"
+            class="search-button"
+            id="search-button"
+          />
+        </form>
+      </header>
+      <main>
+        <div class="weather-app-data">
+          <div class="data-container">
+            <h1 class="city-searched" id="city-searched">Orlando</h1>
+            <p class="app-details">
+              <span id="app-day-time"></span>,
+              <span id="weather-description"></span> <br />
+              Humidity: <span class="weather-details" id="humidity"></span> |
+              Wind speed: <span class="weather-details" id="wind-speed"></span>
+            </p>
+          </div>
+          <div class="temperature-details">
+            <div class="temperature-icon" id="temperature-icon"></div>
+            <div class="temperature-value" id="temperature-value"></div>
+            <div class="temperature-unit" id="temperature-unit"></div>
+          </div>
+        </div>
+        <div class="forecast">
+          <ul>
+            <li>
+              Mon 🌥 <br />
+              79° | 95°
+            </li>
+            <li>
+              Tue 🌦 <br />
+              81° | 95°
+            </li>
+            <li>
+              Wed 🌤 <br />
+              80° | 97°
+            </li>
+            <li>
+              Thu ☀️ <br />
+              82° | 97°
+            </li>
+            <li>
+              Fri 🌧 <br />
+              80° | 94°
+            </li>
+            <li>Sat</li>
+          </ul>
+        </div>
+      </main>
+      <footer class="coded-by">
         <p>
           This code was built by
           <a href="https://www.shecodes.io/graduates/126512-britni-b"
@@ -66,7 +78,7 @@
           and is hosted on <a href="">Netlify</a>
         </p>
       </footer>
-    </main>
+    </div>
     <script src="src/index.js"></script>
   </body>
 </html>
