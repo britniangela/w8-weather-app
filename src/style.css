@@ -83,7 +83,7 @@ header {
 
 .forecast-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .forecast-day {
@@ -115,4 +115,8 @@ footer {
   color: #e4e4e4;
   font-size: 15px;
   margin-top: 30px;
+}
+
+a {
+  color: #004850;
 }
