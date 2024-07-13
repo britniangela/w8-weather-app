@@ -26,7 +26,13 @@ searchFormElement.addEventListener("submit", handleSearch);
 
 searchCity("Orlando");
 
-function displayForecast(day) {
+function getForecast(city) {
+  let apiKey = "58f3tbaa2acbfcb0981e0ecb4ba2453o";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
@@ -49,4 +55,4 @@ function displayForecast(day) {
   });
 }
 
-displayForecast();
+getForecast();
