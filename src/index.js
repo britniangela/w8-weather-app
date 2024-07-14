@@ -5,6 +5,8 @@ function updateTemperatureValue(response) {
 
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
+
+  getForecast(response.data.city);
 }
 
 function searchCity(city) {
@@ -26,6 +28,13 @@ searchFormElement.addEventListener("submit", handleSearch);
 
 searchCity("Orlando");
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function getForecast(city) {
   let apiKey = "58f3tbaa2acbfcb0981e0ecb4ba2453o";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
@@ -33,26 +42,29 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
       <div class="forecast">
-            <div class="forecast-day">${day}</div>
-            <div class="forecast-icon">☀️</div>
+            <div class="forecast-day">${formatDay(day.time)}</div>
+           <img src="${day.condition.icon_url}" class="forecast-icon">
             <div class="forecast-temperatures">
-              <div class="forecast-temperature"><strong>81°</strong></div>
+              <div class="forecast-temperature"><strong>${Math.round(
+                day.temperature.maximum
+              )}°</strong></div>
               <div class="vertical-bar">|</div>
-              <div class="forecast-temperature">95°</div>
+              <div class="forecast-temperature">${Math.round(
+                day.temperature.minimum
+              )}°</div>
             </div>
           </div>`;
 
-    let forecastElement = document.querySelector("#forecast-container");
-    forecastElement.innerHTML = forecastHtml;
+      let forecastElement = document.querySelector("#forecast-container");
+      forecastElement.innerHTML = forecastHtml;
+    }
   });
 }
-
-getForecast();
